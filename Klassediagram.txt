@@ -1,0 +1,33 @@
+@startuml
+title Lyskontrollsystem
+
+class LightController {
+    +turnOn()
+    +turnOff()
+    +scheduleTimer()
+    +detectMotion()
+}
+
+class Sensor {
+    -sensorID : int
+    -location : String
+    +getStatus() : boolean
+}
+
+class Light {
+    -lightID : int
+    -status : boolean
+    -timer : int
+    +setStatus(boolean)
+    +setTimer(int)
+}
+
+class UserInterface {
+    +interact()
+}
+
+LightController "1" -- "1..*" Light : kontrollerer >
+LightController "1" -- "1..*" Sensor : mottar signal fra >
+UserInterface ..> LightController : bruker >
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+title Lyskontrollsystem
+
+start
+:Autentiser bruker;
+
+if (Bruker autentisert?) then (ja)
+  :Sjekk systemstatus;
+  :Vis lysstatus;
+
+  if (Bevegelse oppdaget?) then (ja)
+    :Slå på lys;
+    -Sett tidtaker
+  else (nei)
+    :Gjør ingenting;
+  endif
+
+  if (Tidtaker utløper?) then (ja)
+    :Slå av lys;
+  else (nei)
+    :Gjør ingenting;
+  endif
+
+  if (Tidsbasert kontroll aktivert?) then (ja)
+    :Sjekk tidsintervall;
+    if (Innenfor intervall?) then (ja)
+      :Slå av/på lys basert på tidsplan;
+    else (nei)
+      :Gjør ingenting;
+    endif
+  else (nei)
+    :Manuell kontroll;
+  endif
+  
+else (nei)
+  :Tilgang nektet;
+endif
+
+stop
+@enduml

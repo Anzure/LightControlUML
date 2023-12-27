@@ -1,0 +1,25 @@
+@startuml
+title Lyskontrollsystem
+
+actor Bruker
+actor System
+
+usecase "Slå av/på lys" as TurnLight
+usecase "Konfigurer enhet" as ConfigSettings
+usecase "Vis av/på status" as ViewStatus
+usecase "Sett opp tidsbasert styring" as TimeControl
+usecase "Endre inaktivitetstid" as MotionControl
+
+Bruker --> TurnLight
+Bruker --> ConfigSettings
+Bruker --> ViewStatus
+Bruker --> TimeControl
+Bruker --> MotionControl
+
+System --> TurnLight
+System --> ConfigSettings
+System --> ViewStatus
+System --> TimeControl
+System --> MotionControl
+
+@enduml
